@@ -5,49 +5,54 @@ generator client {
 
 datasource db {
   provider   = "postgresql"
-  extensions = [pgvector(map: "vector")]
+  extensions = [uuid_ossp(map: "uuid-ossp", schema: "extensions"), vector]
 }
 
 model Card {
+  id               Int           @id @default(autoincrement())
+  card_id          Int?          @unique
+  name             String
+  name_en          String?
+  name_vi          String?
+  number           Int
+  arcana           String
+  suit             String?
+  image            String?
+  description      String?
+  detailed_meaning String?
+  upright          String[]
+  reversed         String[]
+  keywords         String[]
+  element          String?
+  zodiac           String?
+  yes_no           String?
+  slug             String        @unique
+  meanings         CardMeaning[]
 
-  id        Int      @id @default(autoincrement())
-  card_id   Int      @unique
-  name_en   String
-  name_vi   String
-  arcana    String   
-  suit      String?  
-  element   String?  
-  image_url String?
-  
-  meanings  CardMeaning[]
-
-  // Index để tìm kiếm nhanh theo bộ (Ẩn chính/Ẩn phụ) hoặc Nguyên tố
   @@index([arcana])
   @@index([element])
+  @@index([slug])
 }
 
 model CardMeaning {
-  id         Int      @id @default(autoincrement())
-  card_id    Int
-  category   String   
-  content    String   @db.Text
-  embedding  Unsupported("vector(1536)")? 
+  id        Int                    @id @default(autoincrement())
+  card_id   Int
+  category  String
+  content   String
+  embedding Unsupported("vector")?
+  card      Card                   @relation(fields: [card_id], references: [card_id])
 
-  card       Card     @relation(fields: [card_id], references: [card_id])
-
-  // Quan trọng: Index để tìm ý nghĩa theo từng lá bài và theo chủ đề (Tình yêu, Sự nghiệp...)
   @@index([card_id])
   @@index([category])
 }
 
 model ReadingSession {
-  id               String   @id @default(uuid())
-  user_question    String   @db.Text
-  selected_topic   String
-  picked_cards     String   
-  ai_response      String   @db.Text
-  created_at       DateTime @default(now())
+  id             String   @id @default(uuid())
+  user_question  String
+  selected_topic String
+  picked_cards   String
+  ai_response    String
+  created_at     DateTime @default(now())
 
-  // Index để sắp xếp lịch sử xem bài theo thời gian nhanh hơn
   @@index([created_at])
 }

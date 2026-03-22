@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { tarotCards, getCardBySlug } from '@/data/tarot-cards';
+import { tarotCards, getCardBySlug } from '@/features/cards';
 import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {

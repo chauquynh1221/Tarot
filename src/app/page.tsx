@@ -3,14 +3,14 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import CardOfTheDay from '@/components/CardOfTheDay';
-import { tarotCards } from '@/data/tarot-cards';
+import CardOfTheDay from '@/features/cards/components/CardOfTheDay';
+import { tarotCards } from '@/features/cards';
 
 const readingTypes = [
-  { icon: '🃏', title: 'Trải Bài 3 Lá', desc: 'Quá khứ — Hiện tại — Tương lai', href: '/boi-bai/3-la' },
-  { icon: '✅', title: 'Yes / No Tarot', desc: 'Câu trả lời Có hoặc Không', href: '/boi-bai/yes-no' },
-  { icon: '💕', title: 'Tarot Tình Yêu', desc: 'Giải mã tình cảm đôi lứa', href: '/boi-bai/3-la?topic=love' },
-  { icon: '💼', title: 'Tarot Sự Nghiệp', desc: 'Định hướng con đường phát triển', href: '/boi-bai/3-la?topic=career' },
+  { icon: '🃏', title: 'Trải Bài 3 Lá', desc: 'Quá Khứ — Hiện Tại — Tương Lai', href: '/boi-bai/3-la' },
+  { icon: '✅', title: 'Yes / No Tarot', desc: 'Một câu hỏi — Một câu trả lời', href: '/boi-bai/yes-no' },
+  { icon: '☘️', title: 'Celtic Cross', desc: 'Phân tích chuyên sâu — 10 vị trí', href: '/boi-bai/celtic-cross' },
+  { icon: '🔮', title: 'Hỏi Vũ Trụ', desc: 'Câu hỏi bất kỳ — Vũ trụ trả lời', href: '/boi-bai/cau-hoi' },
 ];
 
 // Show a few featured cards

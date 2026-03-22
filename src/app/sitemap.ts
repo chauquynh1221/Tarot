@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { tarotCards } from '@/data/tarot-cards';
+import { tarotCards } from '@/features/cards';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://tarotvutru.com';

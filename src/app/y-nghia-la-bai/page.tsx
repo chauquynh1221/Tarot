@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getMajorArcana, getMinorBySuit } from '@/data/tarot-cards';
+import { getMajorArcana, getMinorBySuit } from '@/features/cards';
 
 export const metadata: Metadata = {
   title: 'Ý Nghĩa 78 Lá Bài Tarot — Thư Viện Tarot',
@@ -39,13 +39,13 @@ export default function CardLibraryPage() {
         </h2>
 
         <div style={{
-          display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(100px, 1fr))', gap: '16px',
+          display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '24px',
         }}>
           {majorCards.map((card) => (
             <Link key={card.id} href={`/y-nghia-la-bai/${card.slug}`} style={{ textDecoration: 'none' }}>
               <div style={{ textAlign: 'center', transition: 'transform 0.2s' }}>
                 <div style={{
-                  width: '90px', height: '150px', borderRadius: '8px', overflow: 'hidden',
+                  width: '180px', height: '300px', borderRadius: '10px', overflow: 'hidden',
                   position: 'relative', margin: '0 auto',
                   border: '1.5px solid rgba(187, 161, 55, 0.2)',
                   transition: 'all 0.3s',
@@ -83,13 +83,13 @@ export default function CardLibraryPage() {
             </h2>
 
             <div style={{
-              display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(90px, 1fr))', gap: '14px',
+              display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '20px',
             }}>
               {suitCards.map((card) => (
                 <Link key={card.id} href={`/y-nghia-la-bai/${card.slug}`} style={{ textDecoration: 'none' }}>
                   <div style={{ textAlign: 'center' }}>
                     <div style={{
-                      width: '80px', height: '133px', borderRadius: '6px', overflow: 'hidden',
+                      width: '160px', height: '266px', borderRadius: '8px', overflow: 'hidden',
                       position: 'relative', margin: '0 auto',
                       border: '1.5px solid var(--border)',
                       transition: 'all 0.3s',

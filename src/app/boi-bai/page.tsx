@@ -9,33 +9,27 @@ export const metadata: Metadata = {
 const spreadTypes = [
   {
     icon: '🃏', title: 'Trải Bài 3 Lá', subtitle: 'Quá Khứ — Hiện Tại — Tương Lai',
-    desc: 'Phương pháp kinh điển giúp bạn nhìn thấy bức tranh toàn cảnh.',
+    desc: 'Phương pháp kinh điển giúp bạn nhìn thấy bức tranh toàn cảnh về quá khứ, hiện tại và tương lai. Chọn chủ đề (Tình Yêu, Sự Nghiệp, Tài Chính...) và rút 3 lá bài.',
+    cards: '3 lá',
     href: '/boi-bai/3-la',
   },
   {
     icon: '✅', title: 'Yes / No Tarot', subtitle: 'Một câu hỏi — Một câu trả lời',
-    desc: 'Rút 1 lá bài duy nhất để nhận câu trả lời Có hoặc Không.',
+    desc: 'Đặt một câu hỏi Có/Không, rút 1 lá bài duy nhất và nhận câu trả lời nhanh chóng từ vũ trụ.',
+    cards: '1 lá',
     href: '/boi-bai/yes-no',
   },
   {
-    icon: '💕', title: 'Tarot Tình Yêu', subtitle: 'Giải mã tình cảm đôi lứa',
-    desc: 'Tìm hiểu sâu về mối quan hệ tình cảm và tương lai tình yêu.',
-    href: '/boi-bai/3-la?topic=love',
+    icon: '☘️', title: 'Celtic Cross', subtitle: 'Phân tích chuyên sâu — 10 vị trí',
+    desc: 'Phương pháp trải bài toàn diện nhất trong Tarot. 10 lá bài giúp phân tích sâu về tình huống hiện tại, thử thách, mục tiêu, và kết quả cuối cùng.',
+    cards: '10 lá',
+    href: '/boi-bai/celtic-cross',
   },
   {
-    icon: '💼', title: 'Tarot Sự Nghiệp', subtitle: 'Định hướng con đường',
-    desc: 'Nhận thông điệp từ vũ trụ về công việc và hướng phát triển.',
-    href: '/boi-bai/3-la?topic=career',
-  },
-  {
-    icon: '💰', title: 'Tarot Tài Chính', subtitle: 'Vận may tài lộc',
-    desc: 'Dự đoán vận may tài chính và lời khuyên quản lý tiền bạc.',
-    href: '/boi-bai/3-la?topic=finance',
-  },
-  {
-    icon: '🌟', title: 'Tarot Tổng Quan', subtitle: 'Thông điệp cho ngày mới',
-    desc: 'Nhận thông điệp tổng quan từ vũ trụ cho ngày hôm nay.',
-    href: '/boi-bai/3-la?topic=general',
+    icon: '🔮', title: 'Hỏi Vũ Trụ', subtitle: 'Câu hỏi bất kỳ — Vũ trụ trả lời',
+    desc: 'Đặt câu hỏi tự do bất kỳ. Hệ thống sẽ tự bốc 3 lá bài và dùng AI tìm kiếm ngữ nghĩa để đưa ra câu trả lời sát nhất.',
+    cards: '3 lá (tự động)',
+    href: '/boi-bai/cau-hoi',
   },
 ];
 
@@ -86,6 +80,11 @@ export default function BoiBaiPage() {
               <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>
                 {spread.desc}
               </p>
+              {'cards' in spread && (
+                <p style={{ marginTop: '12px', fontSize: '0.8rem', fontWeight: 700, color: 'var(--gold-400)' }}>
+                  🎴 {spread.cards}
+                </p>
+              )}
             </div>
           </Link>
         ))}
